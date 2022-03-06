@@ -1,12 +1,24 @@
+import s from  './Navbar.module.css'
+
 function Navbar() {
     return (
-        <nav className='navbar'>
-            <ul className='navList'>
-                <li className='navListItem'>Profile</li>
-                <li className='navListItem'>Messages</li>
-                <li className='navListItem'>News</li>
-                <li className='navListItem'>Music</li>
-                <li className='navListItem'>Settings</li>
+        <nav className={s.navbar}>
+            <ul className={s.navList}>
+                <li className={s.navListItem}>
+                    <a className={`${s.navListLink} ${s.active}`}>Profile</a>
+                </li>
+                <li className={s.navListItem}>
+                    <a className={s.navListLink}>Messages</a>
+                </li>
+                <li className={s.navListItem}>
+                    <a className={s.navListLink}>News</a>
+                </li>
+                <li className={s.navListItem}>
+                    <a className={s.navListLink}>Music</a>
+                </li>
+                <li className={s.navListItem}>
+                    <a className={s.navListLink}>Settings</a>
+                </li>
             </ul>
         </nav>
     )

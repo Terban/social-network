@@ -1,0 +1,95 @@
+.content {
+    flex: 1 1 auto;
+}
+
+.screen {
+    margin-bottom: 20px;
+}
+
+.profile {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 30px;
+}
+
+.info {
+}
+
+.userName {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.description {
+    font-size: 24px;
+    color: #333;
+}
+
+.birth {
+}
+
+.city {
+}
+
+.education {
+}
+
+.posts {
+}
+
+.postsTitle {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.newPost {
+    display: flex;
+    flex-direction: column;
+}
+
+.newPostText {
+    align-self: stretch;
+    margin-bottom: 20px;
+    font-size: 24px;
+    padding: 20px;
+    flex: 1 0 200px;
+}
+
+.send {
+    align-self: flex-end;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.postsItems {
+}
+
+.post {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.userAvatar {
+    flex: 0 0 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.postText {
+    font-size: 24px;
+    color: #333;
+}

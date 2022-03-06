@@ -10,9 +10,9 @@ function MyPosts() {
                 <button className={s.send}>Send</button>
             </div>
             <div className={s.postsItems}>
-                <Post/>
-                <Post/>
-                <Post/>
+                <Post message='Hello world!' likes='10'/>
+                <Post message='How are you?' likes='20'/>
+                <Post message='This is my first post' likes='30'/>
             </div>
         </div>
     )

@@ -1,0 +1,36 @@
+.post {
+    margin-bottom: 50px;
+    padding-left: 30px;
+}
+.postContainer {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.userAvatar {
+    flex: 0 0 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.postText {
+    font-size: 24px;
+    color: #333;
+}
+.likeContainer{
+    display: flex;
+    align-items: center;
+}
+.likeBtn{
+    font-size: 20px;
+    cursor: pointer;
+    padding: 2px 10px;
+    margin-right: 20px;
+}
+.likesCount{
+    font-size: 20px;
+}

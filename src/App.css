@@ -26,3 +26,9 @@ img {
 .content {
     flex: 1 1 auto;
 }
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}

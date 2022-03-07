@@ -16,6 +16,6 @@
     font-size: 24px;
     cursor: pointer;
 }
-.navListLink.active {
+.active {
     color: gold;
 }

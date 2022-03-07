@@ -23,3 +23,6 @@ img {
 .main {
     display: flex;
 }
+.content {
+    flex: 1 1 auto;
+}

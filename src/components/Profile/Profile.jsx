@@ -3,7 +3,7 @@ import MyPosts from "./MyPosts/MyPosts";
 
 function Profile() {
     return (
-        <div className={s.content}>
+        <div>
             <div className={s.screen}>
                 <img
                     src="https://user-images.githubusercontent.com/88069082/149702536-10902d67-e4b2-4d4d-89bf-097a04286e93.jpg"

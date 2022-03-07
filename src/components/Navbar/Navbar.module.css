@@ -11,11 +11,11 @@
 .navListItem:last-child {
     margin-top: 20px;
 }
-.navListLink {
+.navLink {
     color: #fff;
     font-size: 24px;
     cursor: pointer;
 }
-.active {
+.navLink.active {
     color: gold;
 }

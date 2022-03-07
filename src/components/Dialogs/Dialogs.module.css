@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    padding-top: 30px;
+}
+
+.dialogs {
+    flex: 0 1 300px;
+    border-right: 2px solid #333;
+    padding-left: 30px;
+}
+
+.dialog {
+    font-size: 24px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.active {
+    color: gold;
+    font-size: 34px;
+}
+
+.messages {
+    padding-left: 30px;
+    flex: 1 1 auto;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.avatar {
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.userName {
+    font-size: 20px;
+    color: #333;
+}
+
+.messageText {
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    font-size: 20px;
+    flex: 0 1 400px;
+}

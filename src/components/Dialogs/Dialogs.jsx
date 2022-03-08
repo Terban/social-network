@@ -36,33 +36,19 @@ function Dialogs() {
             name: 'Me',
             message: 'We are waiting'
         },
-
     ]
+    const dialogsItems = dialogsData.map(dialog => <Dialog id={dialog.id} name={dialog.name}/>)
+    const messagesItems = messagesData.map(message => <Message avatar={message.avatar}
+                                                               name={message.name} message={message.message}/>)
     return (
         <div>
             <h1>Dialogs</h1>
             <div className={s.container}>
                 <div className={s.dialogs}>
-                    <Dialog id={dialogsData[0].id} name={dialogsData[0].name}/>
-                    <Dialog id={dialogsData[1].id} name={dialogsData[1].name}/>
-                    <Dialog id={dialogsData[2].id} name={dialogsData[2].name}/>
-                    <Dialog id={dialogsData[3].id} name={dialogsData[3].name}/>
-                    <Dialog id={dialogsData[4].id} name={dialogsData[4].name}/>
-                    <Dialog id={dialogsData[5].id} name={dialogsData[5].name}/>
+                    {dialogsItems}
                 </div>
                 <div className={s.messages}>
-                    <Message
-                        avatar={messagesData[0].avatar}
-                        name={messagesData[0].name} message={messagesData[0].message}/>
-                    <Message
-                        avatar={messagesData[1].avatar}
-                        name={messagesData[1].name} message={messagesData[1].message}/>
-                    <Message
-                        avatar={messagesData[2].avatar}
-                        name={messagesData[2].name} message={messagesData[2].message}/>
-                    <Message
-                        avatar={messagesData[3].avatar}
-                        name={messagesData[3].name} message={messagesData[3].message}/>
+                    {messagesItems}
                 </div>
             </div>
         </div>

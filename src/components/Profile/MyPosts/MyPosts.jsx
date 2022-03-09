@@ -2,7 +2,8 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 function MyPosts(props) {
-    const postItems = props.posts.map(post => <Post message={post.message} likes={post.likes}/>)
+    const postItems = props.posts.map(post => <Post avatar={post.avatar} name={post.name} message={post.message}
+                                                    likes={post.likes}/>)
     return (
         <div className={s.posts}>
             <div className={s.postsTitle}>My posts</div>

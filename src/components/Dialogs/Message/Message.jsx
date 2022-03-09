@@ -6,8 +6,7 @@ function Message(props) {
             <div className={s.user}>
                 <div className={s.avatar}>
                     <img
-                        src={props.avatar}
-                        alt=""/>
+                        src={props.avatar} alt=""/>
                 </div>
                 <div className={s.userName}>{props.name}</div>
             </div>

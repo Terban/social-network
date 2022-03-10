@@ -4,9 +4,10 @@ import Message from "./Message/Message";
 import React from "react";
 
 function Dialogs(props) {
-    const dialogsItems = props.messagesPage.dialogs.map(dialog => <Dialog id={dialog.id} avatar={dialog.avatar}
+    const dialogsItems = props.messagesPage.dialogs.map(dialog => <Dialog key={dialog.id} id={dialog.id}
+                                                                          avatar={dialog.avatar}
                                                                           name={dialog.name}/>)
-    const messagesItems = props.messagesPage.messages.map(message => <Message avatar={message.avatar}
+    const messagesItems = props.messagesPage.messages.map(message => <Message key={message.id} avatar={message.avatar}
                                                                               name={message.name}
                                                                               message={message.message}/>)
     let newMessageRef = React.createRef()

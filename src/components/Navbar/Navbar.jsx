@@ -4,7 +4,8 @@ import Friend from "./Friend/Friend";
 
 
 function Navbar(props) {
-    const friends = props.navbar.friends.map(friend => <Friend avatar={friend.avatar} name={friend.name}/>)
+    const friends = props.navbar.friends.map(friend => <Friend key={friend.id} avatar={friend.avatar}
+                                                               name={friend.name}/>)
     return (
         <nav className={s.navbar}>
             <ul className={s.navList}>

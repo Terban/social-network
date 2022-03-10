@@ -3,12 +3,13 @@ import Post from "./Post/Post";
 import React from "react";
 
 function MyPosts(props) {
-    const postItems = props.posts.map(post => <Post avatar={post.avatar} name={post.name} message={post.message}
+    const postItems = props.posts.map(post => <Post key={post.id} avatar={post.avatar} name={post.name}
+                                                    message={post.message}
                                                     likes={post.likes}/>)
     let newPostRef = React.createRef()
     const addPost = () => {
         const text = newPostRef.current.value
-        alert(text)
+        props.addNewPost(text)
     }
     return (
         <div className={s.posts}>

@@ -105,4 +105,17 @@ const state = {
     }
 }
 
+export const addNewPost = () => {
+    const newPost = {
+        id: 4,
+        avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/indian_man_male_person-128.png',
+        name: 'Ivan',
+        message: 'I am adding a new post',
+        likes: 0
+    }
+    state.profilePage.posts.push(newPost)
+}
+
 export default state
+
+window.state = state

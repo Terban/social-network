@@ -1,5 +1,6 @@
-import {rerenderEntireTree} from "../render";
-
+let rerenderEntireTree = () => {
+    console.log('state')
+}
 
 const state = {
     profilePage: {
@@ -87,7 +88,7 @@ const state = {
                 message: 'We are waiting'
             },
         ],
-        newMessageText: 'Sekiro'
+        newMessageText: ''
     },
     navbar: {
         friends: [
@@ -120,12 +121,12 @@ export const addNewPost = () => {
     }
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 
 export const updateNewPostText = (newPostText) => {
     state.profilePage.newPostText = newPostText
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 
 export const addNewMessage = () => {
@@ -137,12 +138,16 @@ export const addNewMessage = () => {
     }
     state.messagesPage.messages.push(newMessage)
     state.messagesPage.newMessageText = ''
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 
 export const updateNewMessageText = (newMessageText) => {
     state.messagesPage.newMessageText = newMessageText
-    rerenderEntireTree(state)
+    rerenderEntireTree()
+}
+
+export function subscribe(observer) {
+    rerenderEntireTree = observer
 }
 
 export default state

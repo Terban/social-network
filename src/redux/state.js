@@ -1,3 +1,6 @@
+import {rerenderEntireTree} from "../render";
+
+
 const state = {
     profilePage: {
         posts: [
@@ -105,15 +108,16 @@ const state = {
     }
 }
 
-export const addNewPost = () => {
+export const addNewPost = (newPostText) => {
     const newPost = {
         id: 4,
         avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/indian_man_male_person-128.png',
         name: 'Ivan',
-        message: 'I am adding a new post',
+        message: newPostText,
         likes: 0
     }
     state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state, addNewPost)
 }
 
 export default state

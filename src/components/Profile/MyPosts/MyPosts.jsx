@@ -10,6 +10,7 @@ function MyPosts(props) {
     const addPost = () => {
         const text = newPostRef.current.value
         props.addNewPost(text)
+        newPostRef.current.value = ''
     }
     return (
         <div className={s.posts}>

@@ -25,7 +25,8 @@ const state = {
                 message: 'This is my first post',
                 likes: 30
             }
-        ]
+        ],
+        newPostText: ''
     },
     messagesPage: {
         dialogs: [
@@ -86,6 +87,7 @@ const state = {
                 message: 'We are waiting'
             },
         ],
+        newMessageText: 'Sekiro'
     },
     navbar: {
         friends: [
@@ -108,16 +110,39 @@ const state = {
     }
 }
 
-export const addNewPost = (newPostText) => {
+export const addNewPost = () => {
     const newPost = {
         id: 4,
         avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/indian_man_male_person-128.png',
         name: 'Ivan',
-        message: newPostText,
+        message: state.profilePage.newPostText,
         likes: 0
     }
     state.profilePage.posts.push(newPost)
-    rerenderEntireTree(state, addNewPost)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree(state)
+}
+
+export const updateNewPostText = (newPostText) => {
+    state.profilePage.newPostText = newPostText
+    rerenderEntireTree(state)
+}
+
+export const addNewMessage = () => {
+    const newMessage = {
+        id: 5,
+        avatar: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png',
+        name: 'Me',
+        message: state.messagesPage.newMessageText
+    }
+    state.messagesPage.messages.push(newMessage)
+    state.messagesPage.newMessageText = ''
+    rerenderEntireTree(state)
+}
+
+export const updateNewMessageText = (newMessageText) => {
+    state.messagesPage.newMessageText = newMessageText
+    rerenderEntireTree(state)
 }
 
 export default state

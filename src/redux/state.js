@@ -1,7 +1,6 @@
-const ADD_NEW_POST = 'ADD_NEW_POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
-const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
+import profileReducer from "./profile-reducer";
+import messagesReducer from "./messages-reducer";
+import navbarReducer from "./navbar-reducer";
 
 const store = {
     _state: {
@@ -123,48 +122,12 @@ const store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_NEW_POST:
-                const newPost = {
-                    id: 4,
-                    avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/indian_man_male_person-128.png',
-                    name: 'Ivan',
-                    message: this._state.profilePage.newPostText,
-                    likes: 0
-                }
-                this._state.profilePage.posts.push(newPost)
-                this._state.profilePage.newPostText = ''
-                this._callSubscriber()
-                break
-            case UPDATE_NEW_POST_TEXT:
-                this._state.profilePage.newPostText = action.newPostText
-                this._callSubscriber()
-                break
-            case ADD_NEW_MESSAGE:
-                const newMessage = {
-                    id: 5,
-                    avatar: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png',
-                    name: 'Me',
-                    message: this._state.messagesPage.newMessageText
-                }
-                this._state.messagesPage.messages.push(newMessage)
-                this._state.messagesPage.newMessageText = ''
-                this._callSubscriber()
-                break
-            case UPDATE_NEW_MESSAGE_TEXT:
-                this._state.messagesPage.newMessageText = action.newMessageText
-                this._callSubscriber()
-                break
-            default:
-                alert("action error");
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
+        this._state.navbar = navbarReducer(this._state.navbar, action)
+        this._callSubscriber()
     }
 }
-
-export const addNewPostAC = () => ({type: ADD_NEW_POST})
-export const updateNewPostAC = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, newPostText})
-export const addNewMessageAC = () => ({type: ADD_NEW_MESSAGE})
-export const updateNewMessageAC = (newMessageText) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText})
 
 export default store
 

@@ -1,7 +1,7 @@
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import React from "react";
-import {addNewPostAC, updateNewPostAC} from "../../../redux/state";
+import {addNewPostAC, updateNewPostAC} from "../../../redux/profile-reducer";
 
 function MyPosts(props) {
     const postItems = props.posts.map(post => <Post key={post.id} avatar={post.avatar} name={post.name}

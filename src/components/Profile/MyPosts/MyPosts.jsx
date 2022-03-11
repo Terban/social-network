@@ -1,7 +1,6 @@
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import React from "react";
-import {updateNewPostText} from "../../../redux/state";
 
 function MyPosts(props) {
     const postItems = props.posts.map(post => <Post key={post.id} avatar={post.avatar} name={post.name}
@@ -13,7 +12,7 @@ function MyPosts(props) {
     }
     const onPostChange = () => {
         const text = newPostRef.current.value
-        updateNewPostText(text)
+        props.updateNewPostText(text)
     }
     return (
         <div className={s.posts}>

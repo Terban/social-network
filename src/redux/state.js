@@ -107,45 +107,52 @@ const store = {
             ]
         }
     },
-    getState() {
-        return this._state
-    },
     _callSubscriber() {
         console.log('state')
+    },
+    getState() {
+        return this._state
     },
     subscribe(observer) {
         this._callSubscriber = observer
     },
-    addNewPost() {
-        const newPost = {
-            id: 4,
-            avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/indian_man_male_person-128.png',
-            name: 'Ivan',
-            message: this._state.profilePage.newPostText,
-            likes: 0
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD_NEW_POST':
+                const newPost = {
+                    id: 4,
+                    avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/indian_man_male_person-128.png',
+                    name: 'Ivan',
+                    message: this._state.profilePage.newPostText,
+                    likes: 0
+                }
+                this._state.profilePage.posts.push(newPost)
+                this._state.profilePage.newPostText = ''
+                this._callSubscriber()
+                break
+            case 'UPDATE_NEW_POST_TEXT':
+                this._state.profilePage.newPostText = action.newPostText
+                this._callSubscriber()
+                break
+            case 'ADD_NEW_MESSAGE':
+                const newMessage = {
+                    id: 5,
+                    avatar: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png',
+                    name: 'Me',
+                    message: this._state.messagesPage.newMessageText
+                }
+                this._state.messagesPage.messages.push(newMessage)
+                this._state.messagesPage.newMessageText = ''
+                this._callSubscriber()
+                break
+            case 'UPDATE_NEW_MESSAGE_TEXT':
+                this._state.messagesPage.newMessageText = action.newMessageText
+                this._callSubscriber()
+                break
+            default:
+                alert("action error");
         }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber()
-    },
-    updateNewPostText(newPostText) {
-        this._state.profilePage.newPostText = newPostText
-        this._callSubscriber()
-    },
-    addNewMessage() {
-        const newMessage = {
-            id: 5,
-            avatar: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png',
-            name: 'Me',
-            message: this._state.messagesPage.newMessageText
-        }
-        this._state.messagesPage.messages.push(newMessage)
-        this._state.messagesPage.newMessageText = ''
-        this._callSubscriber()
-    },
-    updateNewMessageText(newMessageText) {
-        this._state.messagesPage.newMessageText = newMessageText
-        this._callSubscriber()
     }
 }
 

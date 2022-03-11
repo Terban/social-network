@@ -8,11 +8,11 @@ function MyPosts(props) {
                                                     likes={post.likes}/>)
     let newPostRef = React.createRef()
     const addPost = () => {
-        props.addNewPost()
+        props.dispatch({type: 'ADD_NEW_POST'})
     }
     const onPostChange = () => {
-        const text = newPostRef.current.value
-        props.updateNewPostText(text)
+        const newPostText = newPostRef.current.value
+        props.dispatch({type: 'UPDATE_NEW_POST_TEXT', newPostText})
     }
     return (
         <div className={s.posts}>

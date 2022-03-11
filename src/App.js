@@ -17,12 +17,10 @@ function App(props) {
                 <div className='content'>
                     <Routes>
                         <Route path="/profile/*" element={<Profile profilePage={props.state.profilePage}
-                                                                   addNewPost={props.addNewPost}
-                                                                   updateNewPostText={props.updateNewPostText}/>}/>
+                                                                   dispatch={props.dispatch}/>}/>
                         <Route path="/dialogs/*"
                                element={<Dialogs messagesPage={props.state.messagesPage}
-                                                 addNewMessage={props.addNewMessage}
-                                                 updateNewMessageText={props.updateNewMessageText}/>}/>
+                                                 dispatch={props.dispatch}/>}/>
                         <Route path="/news/*" element={<News/>}/>
                         <Route path="/music/*" element={<Music/>}/>
                         <Route path="/settings/*" element={<Settings/>}/>

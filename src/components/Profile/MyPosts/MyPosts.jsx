@@ -1,6 +1,7 @@
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import React from "react";
+import {addNewPostAC, updateNewPostAC} from "../../../redux/state";
 
 function MyPosts(props) {
     const postItems = props.posts.map(post => <Post key={post.id} avatar={post.avatar} name={post.name}
@@ -8,11 +9,11 @@ function MyPosts(props) {
                                                     likes={post.likes}/>)
     let newPostRef = React.createRef()
     const addPost = () => {
-        props.dispatch({type: 'ADD_NEW_POST'})
+        props.dispatch(addNewPostAC())
     }
     const onPostChange = () => {
         const newPostText = newPostRef.current.value
-        props.dispatch({type: 'UPDATE_NEW_POST_TEXT', newPostText})
+        props.dispatch(updateNewPostAC(newPostText))
     }
     return (
         <div className={s.posts}>

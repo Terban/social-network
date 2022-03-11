@@ -1,3 +1,8 @@
+const ADD_NEW_POST = 'ADD_NEW_POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
+const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
+
 const store = {
     _state: {
         profilePage: {
@@ -119,7 +124,7 @@ const store = {
 
     dispatch(action) {
         switch (action.type) {
-            case 'ADD_NEW_POST':
+            case ADD_NEW_POST:
                 const newPost = {
                     id: 4,
                     avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/indian_man_male_person-128.png',
@@ -131,11 +136,11 @@ const store = {
                 this._state.profilePage.newPostText = ''
                 this._callSubscriber()
                 break
-            case 'UPDATE_NEW_POST_TEXT':
+            case UPDATE_NEW_POST_TEXT:
                 this._state.profilePage.newPostText = action.newPostText
                 this._callSubscriber()
                 break
-            case 'ADD_NEW_MESSAGE':
+            case ADD_NEW_MESSAGE:
                 const newMessage = {
                     id: 5,
                     avatar: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png',
@@ -146,7 +151,7 @@ const store = {
                 this._state.messagesPage.newMessageText = ''
                 this._callSubscriber()
                 break
-            case 'UPDATE_NEW_MESSAGE_TEXT':
+            case UPDATE_NEW_MESSAGE_TEXT:
                 this._state.messagesPage.newMessageText = action.newMessageText
                 this._callSubscriber()
                 break
@@ -155,6 +160,11 @@ const store = {
         }
     }
 }
+
+export const addNewPostAC = () => ({type: ADD_NEW_POST})
+export const updateNewPostAC = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, newPostText})
+export const addNewMessageAC = () => ({type: ADD_NEW_MESSAGE})
+export const updateNewMessageAC = (newMessageText) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText})
 
 export default store
 

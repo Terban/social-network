@@ -31,6 +31,7 @@ const initialState = {
 function profileReducer (state = initialState, action) {
     switch (action.type) {
         case ADD_NEW_POST:
+            let stateAdd = {...state}
             const newPost = {
                 id: 4,
                 avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/indian_man_male_person-128.png',
@@ -38,12 +39,14 @@ function profileReducer (state = initialState, action) {
                 message: state.newPostText,
                 likes: 0
             }
-            state.posts.push(newPost)
-            state.newPostText = ''
-            return state
+            stateAdd.posts = [...state.posts]
+            stateAdd.posts.push(newPost)
+            stateAdd.newPostText = ''
+            return stateAdd
         case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newPostText
-            return state;
+            let stateUpdate = {...state}
+            stateUpdate.newPostText = action.newPostText
+            return stateUpdate;
         default:
             return state;
     }

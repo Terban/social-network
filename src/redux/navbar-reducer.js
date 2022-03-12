@@ -18,7 +18,7 @@ const initialState = {
     ]
 }
 
-function navbarReducer (state = initialState, action) {
+function navbarReducer (state = initialState) {
     return state
 }
 

@@ -63,7 +63,7 @@ const initialState = {
     newMessageText: ''
 }
 
-function messagesReducer (state = initialState, action) {
+function messagesReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_NEW_MESSAGE:
             const newMessage = {

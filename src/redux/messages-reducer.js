@@ -66,21 +66,22 @@ const initialState = {
 function messagesReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_NEW_MESSAGE:
-            let stateAdd = {...state}
             const newMessage = {
                 id: 5,
                 avatar: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png',
                 name: 'Me',
                 message: state.newMessageText
             }
-            stateAdd.messages = [...state.messages]
-            stateAdd.messages.push(newMessage)
-            stateAdd.newMessageText = ''
-            return stateAdd;
+            return {
+                ...state,
+                messages: [...state.messages, newMessage],
+                newMessageText: ''
+            }
         case UPDATE_NEW_MESSAGE_TEXT:
-            let stateUpdate = {...state}
-            stateUpdate.newMessageText = action.newMessageText
-            return stateUpdate;
+            return {
+                ...state,
+                newMessageText: action.newMessageText
+            }
         default:
             return state;
     }

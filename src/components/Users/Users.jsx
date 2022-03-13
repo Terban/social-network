@@ -3,13 +3,14 @@ import axios from "axios";
 import unknown from '../../assets/images/unknown.webp'
 
 function Users(props) {
-    if (props.users.length === 0) {
+    function getUsers() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => props.setUsers(response.data.items))
     }
 
     return (<div className={s.wrapper}>
         <h1>Users</h1>
+        <button onClick={getUsers}>Get users</button>
         {props.users.map(u => {
             return (<div className={s.userBlock} key={u.id}>
                 <div className={s.user}>

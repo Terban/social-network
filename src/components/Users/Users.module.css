@@ -53,9 +53,10 @@
     font-weight: normal;
 }
 
-.country {
+.uniqueUrlName {
     margin-bottom: 20px;
 }
 
-.city {
+.userId {
+    font-size: 20px;
 }

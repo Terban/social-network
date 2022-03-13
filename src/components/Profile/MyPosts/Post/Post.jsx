@@ -1,6 +1,6 @@
 import s from './Post.module.css'
 
-function MyPosts(props) {
+function Post(props) {
     return (
         <div className={s.post}>
             <div className={s.postContainer}>
@@ -20,4 +20,4 @@ function MyPosts(props) {
     )
 }
 
-export default MyPosts;
+export default Post;

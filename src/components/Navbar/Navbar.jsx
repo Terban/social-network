@@ -22,6 +22,9 @@ function Navbar(props) {
                     <NavLink to='/music' className={({isActive}) => (isActive ? s.active : '')}>Music</NavLink>
                 </li>
                 <li className={s.navListItem}>
+                    <NavLink to='/users' className={({isActive}) => (isActive ? s.active : '')}>Find users</NavLink>
+                </li>
+                <li className={s.navListItem}>
                     <NavLink to='/settings' className={({isActive}) => (isActive ? s.active : '')}>Settings</NavLink>
                 </li>
             </ul>

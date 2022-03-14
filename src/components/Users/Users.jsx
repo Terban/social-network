@@ -6,11 +6,26 @@ import React from "react";
 
 class Users extends React.Component {
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+                this.props.setTotalUserCount(response.data.totalCount)
+            })
+    }
+
+    onPageChanged = (currentPage) => {
+        this.props.setCurrentPage(currentPage)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`)
             .then(response => this.props.setUsers(response.data.items))
     }
 
     render() {
+        const pages = []
+        const pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
         return (<div className={s.wrapper}>
             <h1>Users</h1>
             {this.props.users.map(u => {
@@ -33,6 +48,14 @@ class Users extends React.Component {
                     </div>
                 </div>)
             })}
+            <div className={s.paging}>
+                {pages.map(p => {
+                    return <div onClick={() => {
+                        this.onPageChanged(p)
+                    }} key={p} className={this.props.currentPage === p ? `${s.page} ${s.currentPage}` :
+                        s.page}>{p}</div>
+                })}
+            </div>
         </div>)
     }
 

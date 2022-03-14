@@ -4,10 +4,8 @@ import unknown from '../../assets/images/unknown.webp'
 import React from "react";
 
 
-
 class Users extends React.Component {
-    constructor(props) {
-        super(props);
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => this.props.setUsers(response.data.items))
     }
@@ -28,7 +26,8 @@ class Users extends React.Component {
                             <div className={s.status}>{u.status ? u.status : 'No status'}</div>
                         </div>
                         <div className={s.userInfoColumn}>
-                            <div className={s.uniqueUrlName}>{u.uniqueUrlName ? u.uniqueUrlName : 'No uniqueUrlName'}</div>
+                            <div
+                                className={s.uniqueUrlName}>{u.uniqueUrlName ? u.uniqueUrlName : 'No uniqueUrlName'}</div>
                             <div className={s.userId}>ID: {u.id}</div>
                         </div>
                     </div>

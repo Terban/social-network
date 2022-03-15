@@ -8,7 +8,7 @@ function MyPosts(props) {
                                                     likes={post.likes}/>)
     let newPostRef = React.createRef()
     const onAddPost = () => {
-        props.addPost()
+        props.addNewPost()
     }
     const onPostChange = () => {
         const newPostText = newPostRef.current.value

@@ -53,7 +53,7 @@ function profileReducer(state = initialState, action) {
     }
 }
 
-export const addNewPostAC = () => ({type: ADD_NEW_POST})
-export const updateNewPostAC = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, newPostText})
+export const addNewPost = () => ({type: ADD_NEW_POST})
+export const updateNewPost = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, newPostText})
 
 export default profileReducer

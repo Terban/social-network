@@ -10,7 +10,13 @@ import Preloader from "../common/Preloader/Preloader";
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
+            {
+                withCredentials: true,
+                headers: {
+                    "API-KEY": "de177116-1807-4616-af10-698c2641761e"
+                }
+            })
             .then(response => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
@@ -21,7 +27,13 @@ class UsersContainer extends React.Component {
     onPageChanged = (currentPage) => {
         this.props.setCurrentPage(currentPage)
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`,
+            {
+                withCredentials: true,
+                headers: {
+                    "API-KEY": "de177116-1807-4616-af10-698c2641761e"
+                }
+            })
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.toggleIsFetching(false)

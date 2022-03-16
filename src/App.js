@@ -1,6 +1,6 @@
 import './App.css';
 import Header from "./components/Header/Header";
-import {Route, Routes} from "react-router-dom";
+import {Route,} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -16,15 +16,13 @@ function App() {
             <main className='main'>
                 <NavbarContainer/>
                 <div className='content'>
-                    <Routes>
-                        <Route path="/profile/*" element={<ProfileContainer/>}/>
-                        <Route path="/dialogs/*"
-                               element={<DialogsContainer/>}/>
-                        <Route path="/news/*" element={<News/>}/>
-                        <Route path="/music/*" element={<Music/>}/>
-                        <Route path="/settings/*" element={<Settings/>}/>
-                        <Route path="/users/*" element={<UsersContainer/>}/>
-                    </Routes>
+                        <Route path="/profile/:userId?" component={ProfileContainer}/>
+                        <Route path="/dialogs"
+                               component={DialogsContainer}/>
+                        <Route path="/news" component={News}/>
+                        <Route path="/music" component={Music}/>
+                        <Route path="/settings" component={Settings}/>
+                        <Route path="/users" component={UsersContainer}/>
                 </div>
             </main>
         </div>

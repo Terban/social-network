@@ -2,8 +2,16 @@
     background-color: #6bcb6b;
     padding: 10px 30px;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
     width: 100px;
+}
+
+.login {
+    color: #fff;
+    font-size: 20px;
 }

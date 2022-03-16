@@ -4,38 +4,26 @@ import {
     follow, setCurrentPage, setTotalUserCount, setUsers, toggleIsFetching, unfollow
 } from "../../redux/users-reducer";
 import React from "react";
-import axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
+import {usersAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
-            {
-                withCredentials: true,
-                headers: {
-                    "API-KEY": "de177116-1807-4616-af10-698c2641761e"
-                }
-            })
-            .then(response => {
+        usersAPI.getUsers(this.props.pageSize, this.props.currentPage)
+            .then(data => {
                 this.props.toggleIsFetching(false)
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUserCount(response.data.totalCount)
+                this.props.setUsers(data.items)
+                this.props.setTotalUserCount(data.totalCount)
             })
     }
 
     onPageChanged = (currentPage) => {
         this.props.setCurrentPage(currentPage)
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`,
-            {
-                withCredentials: true,
-                headers: {
-                    "API-KEY": "de177116-1807-4616-af10-698c2641761e"
-                }
-            })
-            .then(response => {
-                this.props.setUsers(response.data.items)
+        usersAPI.getUsers(this.props.pageSize, currentPage)
+            .then(data => {
+                this.props.setUsers(data.items)
                 this.props.toggleIsFetching(false)
             })
     }
@@ -55,12 +43,12 @@ class UsersContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage.currentPage,
-        totalUserCount: state.usersPage.totalUserCount,
-        isFetching: state.usersPage.isFetching,
-    })
+    users: state.usersPage.users,
+    pageSize: state.usersPage.pageSize,
+    currentPage: state.usersPage.currentPage,
+    totalUserCount: state.usersPage.totalUserCount,
+    isFetching: state.usersPage.isFetching,
+})
 
 
 export default connect(mapStateToProps, {

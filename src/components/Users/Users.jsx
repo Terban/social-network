@@ -3,6 +3,7 @@ import unknown from '../../assets/images/unknown.webp'
 import React from "react";
 import {NavLink} from "react-router-dom";
 import {followAPI} from "../../api/api";
+import {toggleFollowingInProgress} from "../../redux/users-reducer";
 
 function Users(props) {
     const pages = []
@@ -20,19 +21,25 @@ function Users(props) {
                         <NavLink to={'/profile/' + u.id} className={s.avatar}><img src={u.photos.small
                             ? u.photos.small : unknown} alt=""/></NavLink>
                         {u.followed
-                            ? <button onClick={() => {
+
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.toggleFollowingInProgress(u.id, true)
                                 followAPI.getUnfollow(u.id)
                                     .then(data => {
                                         if (data.resultCode === 0) props.unfollow(u.id)
+                                        props.toggleFollowingInProgress(u.id, false)
                                     })
                             }}>Unfollow</button>
 
-                            : <button onClick={() => {
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.toggleFollowingInProgress(u.id, true)
                                 followAPI.getFollow(u.id)
                                     .then(data => {
                                         if (data.resultCode === 0) props.follow(u.id)
+                                        props.toggleFollowingInProgress(u.id, false)
                                     })
                             }}>Follow</button>}
+
                     </div>
                     <div className={s.userInfo}>
                         <div className={s.userInfoColumn}>

@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 function Dialog(props) {
     return (
         <NavLink to={'/dialogs/' + props.id}
-                 className={({isActive}) => (isActive ? `${s.dialog} ${s.active}` : s.dialog)}>
+                 className={s.dialog} activeClassName={s.active}>
             <div className={s.avatar}>
                 <img src={props.avatar} alt=""/>
             </div>

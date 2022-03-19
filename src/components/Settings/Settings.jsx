@@ -1,3 +1,5 @@
+import withAuthRedirect from "../../hoc/withAuthRedirect";
+
 function Settings() {
     return (
         <div>
@@ -6,4 +8,4 @@ function Settings() {
     )
 }
 
-export default Settings;
+export default withAuthRedirect(Settings) ;

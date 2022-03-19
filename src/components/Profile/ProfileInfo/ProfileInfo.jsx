@@ -1,6 +1,7 @@
 import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import unknown from "../../../assets/images/unknown.webp"
+import Status from "./Status/Status";
 
 function ProfileInfo(props) {
     if(!props.profile) return <Preloader/>
@@ -20,6 +21,9 @@ function ProfileInfo(props) {
                 </div>
                 <div className={s.info}>
                     <div className={s.userName}>{props.profile.fullName}</div>
+
+                    <Status/>
+
                     <div className={s.description}>
                         <div className={s.birth}>{props.profile.lookingForAJob ? 'Ищу работу' : 'Работу не ищу'}</div>
                         <div className={s.city}>{props.profile.lookingForAJobDescription}</div>

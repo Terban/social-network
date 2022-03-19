@@ -1,3 +1,5 @@
+import withAuthRedirect from "../../hoc/withAuthRedirect";
+
 function Music() {
     return (
         <div>
@@ -6,4 +8,4 @@ function Music() {
     )
 }
 
-export default Music;
+export default withAuthRedirect(Music) ;

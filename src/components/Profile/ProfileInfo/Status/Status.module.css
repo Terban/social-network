@@ -1,0 +1,15 @@
+.status {
+    display: flex;
+    flex-direction: column;
+}
+
+.status label {
+    font-size: 24px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.status input {
+    font-size: 24px;
+    margin-bottom: 10px;
+}

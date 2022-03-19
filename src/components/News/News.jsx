@@ -1,3 +1,5 @@
+import withAuthRedirect from "../../hoc/withAuthRedirect";
+
 function News() {
     return (
         <div>
@@ -6,4 +8,4 @@ function News() {
     )
 }
 
-export default News;
+export default withAuthRedirect(News);

@@ -3,12 +3,9 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
 
-let mapStateToProps = (state) => {
-    return {
-        messagesPage: state.messagesPage
-    }
-}
+let mapStateToProps = (state) => ({
+    messagesPage: state.messagesPage,
+    isAuth: state.auth.isAuth
+})
 
-const DialogsContainer = connect(mapStateToProps, {addNewMessage, updateNewMessage})(Dialogs)
-
-export default DialogsContainer;
+export const DialogsContainer = connect(mapStateToProps, {addNewMessage, updateNewMessage})(Dialogs)

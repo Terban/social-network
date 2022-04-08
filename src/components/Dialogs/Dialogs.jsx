@@ -2,6 +2,7 @@ import s from './Dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import React from "react";
+import {Field, Form, Formik} from "formik";
 
 function Dialogs(props) {
     const dialogsItems = props.messagesPage.dialogs.map(dialog => <Dialog key={dialog.id} id={dialog.id}
@@ -10,15 +11,6 @@ function Dialogs(props) {
     const messagesItems = props.messagesPage.messages.map(message => <Message key={message.id} avatar={message.avatar}
                                                                               name={message.name}
                                                                               message={message.message}/>)
-    let newMessageRef = React.createRef()
-    const onAddMessage = () => {
-        props.addNewMessage()
-    }
-    const onMessageChange = () => {
-        const newMessageText = newMessageRef.current.value
-        props.updateNewMessage(newMessageText)
-    }
-
     return (
         <div>
             <h1>Dialogs</h1>
@@ -28,12 +20,23 @@ function Dialogs(props) {
                 </div>
                 <div className={s.messages}>
                     {messagesItems}
-                    <div className={s.newMessage}>
-                        <textarea onChange={onMessageChange} ref={newMessageRef} className={s.newMessageText}
-                                  name="newMessage" id=""
-                                  placeholder='your message...' value={props.messagesPage.newMessageText}/>
-                        <button onClick={onAddMessage} className={s.send}>Send</button>
-                    </div>
+                    <Formik
+                        initialValues={{newMessageText: ''}}
+                        onSubmit={(values, {setSubmitting}) => {
+                            setTimeout(() => {
+                                props.addNewMessage(values.newMessageText)
+                                setSubmitting(false);
+                            }, 400);
+                        }}
+                    >
+                        {({isSubmitting}) => (
+                            <Form className={s.newMessage}>
+                                <Field name="newMessageText" component="textarea" className={s.newMessageText}
+                                       placeholder='your message...'/>
+                                <button type="submit" disabled={isSubmitting} className={s.send}>Send</button>
+                            </Form>
+                        )}
+                    </Formik>
                 </div>
             </div>
         </div>

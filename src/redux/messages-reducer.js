@@ -1,5 +1,4 @@
 const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
 
 const initialState = {
     dialogs: [
@@ -60,7 +59,6 @@ const initialState = {
             message: 'We are waiting'
         },
     ],
-    newMessageText: ''
 }
 
 function messagesReducer(state = initialState, action) {
@@ -70,24 +68,17 @@ function messagesReducer(state = initialState, action) {
                 id: 5,
                 avatar: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png',
                 name: 'Me',
-                message: state.newMessageText
+                message: action.newMessageText
             }
             return {
                 ...state,
                 messages: [...state.messages, newMessage],
-                newMessageText: ''
-            }
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.newMessageText
             }
         default:
             return state;
     }
 }
 
-export const addNewMessage = () => ({type: ADD_NEW_MESSAGE})
-export const updateNewMessage = (newMessageText) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText})
+export const addNewMessage = (newMessageText) => ({type: ADD_NEW_MESSAGE, newMessageText})
 
 export default messagesReducer

@@ -1,7 +1,6 @@
 import {profileAPI} from "../api/api";
 
 const ADD_NEW_POST = 'ADD_NEW_POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 
@@ -41,18 +40,12 @@ function profileReducer(state = initialState, action) {
                 id: 4,
                 avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/indian_man_male_person-128.png',
                 name: 'Ivan',
-                message: state.newPostText,
+                message: action.newPostText,
                 likes: 0
             }
             return {
                 ...state,
                 posts: [...state.posts, newPost],
-                newPostText: ''
-            }
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newPostText
             }
         case SET_USER_PROFILE:
             return {
@@ -69,8 +62,7 @@ function profileReducer(state = initialState, action) {
     }
 }
 
-export const addNewPost = () => ({type: ADD_NEW_POST})
-export const updateNewPost = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, newPostText})
+export const addNewPost = (newPostText) => ({type: ADD_NEW_POST, newPostText})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
 

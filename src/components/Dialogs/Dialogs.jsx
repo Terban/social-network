@@ -2,9 +2,9 @@ import s from './Dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import React from "react";
-import {Field, Form, Formik} from "formik";
+import {ErrorMessage, Field, Form, Formik} from "formik";
 
-function Dialogs(props) {
+const Dialogs = (props) => {
     const dialogsItems = props.messagesPage.dialogs.map(dialog => <Dialog key={dialog.id} id={dialog.id}
                                                                           avatar={dialog.avatar}
                                                                           name={dialog.name}/>)
@@ -20,8 +20,19 @@ function Dialogs(props) {
                 </div>
                 <div className={s.messages}>
                     {messagesItems}
+
                     <Formik
                         initialValues={{newMessageText: ''}}
+                        validate={values => {
+                            const errors = {};
+                            if (!values.newMessageText) {
+                                errors.newMessageText = 'Required';
+                            }
+                            if (values.newMessageText.length > 10) {
+                                errors.newMessageText = 'Max symbols = 10';
+                            }
+                            return errors;
+                        }}
                         onSubmit={(values, {setSubmitting}) => {
                             setTimeout(() => {
                                 props.addNewMessage(values.newMessageText)
@@ -33,10 +44,12 @@ function Dialogs(props) {
                             <Form className={s.newMessage}>
                                 <Field name="newMessageText" component="textarea" className={s.newMessageText}
                                        placeholder='your message...'/>
+                                <ErrorMessage className={s.error} name="newMessageText" component="div"/>
                                 <button type="submit" disabled={isSubmitting} className={s.send}>Send</button>
                             </Form>
                         )}
                     </Formik>
+
                 </div>
             </div>
         </div>

@@ -20,6 +20,11 @@
     cursor: pointer;
 }
 
+.error {
+    padding-top: 10px;
+    color: red;
+}
+
 .login {
     padding: 5px;
     font-size: 20px;
@@ -30,7 +35,7 @@
     font-size: 20px;
 }
 
-.checkbox{
+.checkbox {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;

@@ -33,6 +33,10 @@
     flex: 1 0 200px;
 }
 
+.error {
+    color: red;
+}
+
 .send {
     align-self: flex-end;
     font-size: 24px;

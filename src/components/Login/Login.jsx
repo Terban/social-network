@@ -25,12 +25,12 @@ const Login = (props) => {
                     }
                     return errors;
                 }}
-                onSubmit={(values, {setSubmitting}) => {
-                    props.login(values.email, values.password, values.rememberMe)
+                onSubmit={(values, {setSubmitting, setStatus}) => {
+                    props.login(values.email, values.password, values.rememberMe, setStatus)
                     setSubmitting(false);
                 }}
             >
-                {({isSubmitting}) => (
+                {({isSubmitting, status}) => (
                     <Form className={s.form}>
                         <div className={s.row}>
                             <Field type="email" name="email" className={s.login} id="email"/>
@@ -42,6 +42,7 @@ const Login = (props) => {
                             <label className={s.label} htmlFor="password">Password</label>
                             <ErrorMessage className={s.error} name="password" component="div"/>
                         </div>
+                        {status ? <div className={s.statusError}>{status}</div> : null}
                         <div className={s.checkbox}>
                             <Field type="checkbox" name="rememberMe" placeholder="" className={s.rememberMe}
                                    id="rememberMe"/>

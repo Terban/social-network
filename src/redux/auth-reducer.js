@@ -27,7 +27,7 @@ export const setAuthUserData = (id, login, email, isAuth) => ({
 })
 
 export const getAuthMe = () => (dispatch) => {
-    authAPI.getAuthMe()
+    return authAPI.getAuthMe()
         .then(data => {
             if (data.resultCode === 0) {
                 const {id, login, email} = data.data
@@ -43,7 +43,6 @@ export const login = (email, password, rememberMe, setStatus) => (dispatch) => {
                 dispatch(getAuthMe())
             } else {
                 setStatus(data.messages.join(" "))
-                //alert(data.messages.join(" "))
             }
         })
 }

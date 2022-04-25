@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import s from "./Status.module.css";
 
 const StatusWithHooks = (props) => {
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
+    useEffect(() => {
+        setStatus(props.status)
+    },[props.status])
 
     const activateEditMode = () => {
         setEditMode(true)

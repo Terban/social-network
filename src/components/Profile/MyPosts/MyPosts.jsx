@@ -3,7 +3,7 @@ import Post from "./Post/Post";
 import React from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 
-const MyPosts = (props) => {
+const MyPosts = props => {
     const postItems = props.posts.map(post => <Post key={post.id} avatar={post.avatar} name={post.name}
                                                     message={post.message}
                                                     likes={post.likes}/>)
@@ -46,6 +46,6 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-}
+};
 
 export default MyPosts;

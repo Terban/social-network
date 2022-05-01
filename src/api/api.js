@@ -7,49 +7,49 @@ const instance = axios.create({
 });
 
 export const usersAPI = {
-    getUsers(pageSize = 10, currentPage = 1) {
-        return instance.get(`/users?count=${pageSize}&page=${currentPage}`)
-            .then(response => response.data)
+    async getUsers(pageSize = 10, currentPage = 1) {
+        const response = await instance.get(`/users?count=${pageSize}&page=${currentPage}`)
+        return response.data
     }
 }
 
 export const followAPI = {
-    getUnfollow(userId) {
-        return instance.delete("/follow/" + userId)
-            .then(response => response.data)
+    async getUnfollow(userId) {
+        const response = await instance.delete("/follow/" + userId)
+        return response.data
     },
-    getFollow(userId) {
-        return instance.post("/follow/" + userId)
-            .then(response => response.data)
+    async getFollow(userId) {
+        const response = await instance.post("/follow/" + userId)
+        return response.data
     }
 }
 
 export const authAPI = {
-    getAuthMe() {
-        return instance.get("/auth/me")
-            .then(response => response.data)
+    async getAuthMe() {
+        const response = await instance.get("/auth/me")
+        return response.data
     },
-    login(email, password, rememberMe = false) {
-        return instance.post("/auth/login", {email, password, rememberMe})
-            .then(response => response.data)
+    async login(email, password, rememberMe = false) {
+        const response = await instance.post("/auth/login", {email, password, rememberMe})
+        return response.data
     },
-    logout() {
-        return instance.delete("/auth/login")
-            .then(response => response.data)
+    async logout() {
+        const response = await instance.delete("/auth/login")
+        return response.data
     },
 }
 
 export const profileAPI = {
-    getProfile(userId) {
-        return instance.get("/profile/" + userId)
-            .then(response => response.data)
+    async getProfile(userId) {
+        const response = await instance.get("/profile/" + userId)
+        return response.data
     },
-    getStatus(userId) {
-        return instance.get("/profile/status/" + userId)
-            .then(response => response.data)
+    async getStatus(userId) {
+        const response = await instance.get("/profile/status/" + userId)
+        return response.data
     },
-    updateStatus(status) {
-        return instance.put("/profile/status/", {status})
-            .then(response => response.data)
+    async updateStatus(status) {
+        const response = await instance.put("/profile/status/", {status})
+        return response.data
     }
 }

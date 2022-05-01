@@ -1,0 +1,17 @@
+.paging {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.page {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px 10px;
+    color: #333;
+}
+
+.currentPage {
+    background-color: #6bcb6b;
+    color: #fff;
+}

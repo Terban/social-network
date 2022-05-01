@@ -1,6 +1,6 @@
 import {getAuthMe} from "./auth-reducer";
 
-const SET_INITIALIZATION = 'SET_INITIALIZATION'
+const SET_INITIALIZATION = 'app/SET_INITIALIZATION'
 
 const initialState = {
     initialized: false,

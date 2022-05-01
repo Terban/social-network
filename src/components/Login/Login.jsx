@@ -2,11 +2,11 @@ import s from "./Login.module.css"
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import React from "react";
 import {connect} from "react-redux";
-import {login, logout} from "../../redux/auth-reducer";
+import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 
-const Login = (props) => {
-    if (props.isAuth) return <Redirect to='/profile'/>
+const Login = ({isAuth, login}) => {
+    if (isAuth) return <Redirect to='/profile'/>
     return (
         <div className={s.wrapper}>
             <Formik
@@ -26,7 +26,7 @@ const Login = (props) => {
                     return errors;
                 }}
                 onSubmit={(values, {setSubmitting, setStatus}) => {
-                    props.login(values.email, values.password, values.rememberMe, setStatus)
+                    login(values.email, values.password, values.rememberMe, setStatus)
                     setSubmitting(false);
                 }}
             >
@@ -60,4 +60,4 @@ let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
 })
 
-export default connect(mapStateToProps, {login, logout})(Login)
+export default connect(mapStateToProps, {login})(Login)

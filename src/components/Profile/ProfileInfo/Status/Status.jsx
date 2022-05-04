@@ -20,9 +20,9 @@ class Status extends React.Component {
     activateEditMode = () => {
         this.setState({editMode: true})
     }
-    deactivateEditMode = (e) => {
+    deactivateEditMode = () => {
         this.setState({editMode: false})
-        this.props.updateStatus(e.currentTarget.value)
+        this.props.updateStatus(this.state.status)
     }
 
     render() {

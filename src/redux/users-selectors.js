@@ -21,6 +21,10 @@ export const selectIsFetching = (state) => {
 export const selectFollowingInProgress = (state) => {
     return state.usersPage.followingInProgress
 }
+export const selectPortionSize= (state) => {
+    return state.usersPage.portionSize
+}
+
 
 
 

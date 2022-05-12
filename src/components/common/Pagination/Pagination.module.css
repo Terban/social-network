@@ -1,7 +1,15 @@
 .paging {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
+}
+
+.prevButton{
+    margin-right: 10px;
+    cursor: pointer;
+}
+.nextButton{
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 .page {

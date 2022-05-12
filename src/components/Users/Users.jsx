@@ -13,8 +13,9 @@ function Users(props) {
                           unfollow={props.unfollow}/>
                 )
             })}
-            <Pagination totalUserCount={props.totalUserCount} pageSize={props.pageSize}
-                        onPageChanged={props.onPageChanged} currentPage={props.currentPage}/>
+            <Pagination totalItemsCount={props.totalUserCount} pageSize={props.pageSize}
+                        onPageChanged={props.onPageChanged} currentPage={props.currentPage}
+                        portionSize={props.portionSize}/>
         </div>)
 }
 

@@ -4,20 +4,19 @@ import unknown from "../../../assets/images/unknown.webp"
 import StatusWithHooks from "./Status/StatusWithHooks";
 
 function ProfileInfo(props) {
-    if(!props.profile) return <Preloader/>
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) props.savePhoto(e.target.files[0])
+    }
+
+    if (!props.profile) return <Preloader/>
     return (
         <div>
-            <div className={s.screen}>
-                <img
-                    src={props.profile.photos.large ? props.profile.photos.large :
-                        "https://user-images.githubusercontent.com/88069082/149702536-10902d67-e4b2-4d4d-89bf-097a04286e93.jpg"}
-                    alt=""/>
-            </div>
             <div className={s.profile}>
                 <div className={s.avatar}>
                     <img
-                        src={props.profile.photos.small ? props.profile.photos.small : unknown}
+                        src={props.profile.photos.large ? props.profile.photos.large : unknown}
                         alt=""/>
+                    {props.isOwner && <input onChange={onMainPhotoSelected} type="file"/>}
                 </div>
                 <div className={s.info}>
                     <div className={s.userName}>{props.profile.fullName}</div>

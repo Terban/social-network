@@ -10,6 +10,7 @@
     flex: 0 0 300px;
     margin-right: 30px;
 }
+
 .avatar img {
     width: 100%;
 }
@@ -29,11 +30,66 @@
     color: #333;
 }
 
-.birth {
+.aboutMe {
+    margin-bottom: 10px;
 }
 
-.city {
+.lookingForAJob {
+    margin-bottom: 10px;
 }
 
-.education {
+.jobDescription {
+    margin-bottom: 10px;
+}
+
+.contacts {
+    font-size: 28px;
+    color: #333;
+}
+
+.contactsTitle {
+    margin-bottom: 10px;
+}
+
+.contact {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.editMode {
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+    margin-top: 15px;
+}
+
+.form {
+}
+
+.statusError {
+}
+
+.formRow {
+    display: flex;
+}
+
+.label {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+.formRow {
+    margin-bottom: 10px;
+}
+
+.fromContactsTitle {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.statusError {
+    margin-bottom: 10px;
+    color: red;
 }

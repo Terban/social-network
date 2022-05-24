@@ -58,4 +58,8 @@ export const profileAPI = {
         const response = await instance.put("/profile/photo/", bodyFormData)
         return response.data
     },
+    async saveProfile(profile) {
+        const response = await instance.put("/profile/", profile)
+        return response.data
+    },
 }

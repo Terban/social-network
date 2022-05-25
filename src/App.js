@@ -37,7 +37,7 @@ class App extends Component {
                         <Route path="/music" component={Music}/>
                         <Route path="/settings" component={Settings}/>
                         <Route path="/users" render={withSuspense(UsersContainer)}/>
-                        <Route path="/login" component={Login}/>
+                        <Route path="/login" render={() => <Login/>}/>
                     </div>
                 </main>
             </div>

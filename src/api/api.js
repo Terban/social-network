@@ -29,8 +29,9 @@ export const authAPI = {
         const response = await instance.get("/auth/me")
         return response.data
     },
-    async login(email, password, rememberMe = false) {
-        const response = await instance.post("/auth/login", {email, password, rememberMe})
+    async login(email, password, rememberMe = false, captcha = null) {
+        debugger
+        const response = await instance.post("/auth/login", {email, password, rememberMe, captcha})
         return response.data
     },
     async logout() {
@@ -61,5 +62,12 @@ export const profileAPI = {
     async saveProfile(profile) {
         const response = await instance.put("/profile/", profile)
         return response.data
+    },
+}
+
+export const securityAPI = {
+    async getCaptchaUrl() {
+        const response = await instance.get("/security/get-captcha-url/")
+        return response.data.url
     },
 }

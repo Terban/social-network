@@ -5,12 +5,12 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 
-const Login = ({isAuth, login}) => {
+const Login = ({isAuth, login, captchaUrl}) => {
     if (isAuth) return <Redirect to='/profile'/>
     return (
         <div className={s.wrapper}>
             <Formik
-                initialValues={{email: '', password: '', rememberMe: false}}
+                initialValues={{email: '', password: '', rememberMe: false, captcha: ''}}
                 validate={values => {
                     const errors = {};
                     if (!values.email) {
@@ -26,7 +26,7 @@ const Login = ({isAuth, login}) => {
                     return errors;
                 }}
                 onSubmit={(values, {setSubmitting, setStatus}) => {
-                    login(values.email, values.password, values.rememberMe, setStatus)
+                    login(values.email, values.password, values.rememberMe, values.captcha, setStatus)
                     setSubmitting(false);
                 }}
             >
@@ -42,6 +42,8 @@ const Login = ({isAuth, login}) => {
                             <label className={s.label} htmlFor="password">Password</label>
                             <ErrorMessage className={s.error} name="password" component="div"/>
                         </div>
+                        {captchaUrl && <img src={captchaUrl} alt="captchaUrl"/>}
+                        {captchaUrl && <Field type="text" name="captcha" placeholder="captcha" className={s.captcha}/>}
                         {status ? <div className={s.statusError}>{status}</div> : null}
                         <div className={s.checkbox}>
                             <Field type="checkbox" name="rememberMe" placeholder="" className={s.rememberMe}
@@ -58,6 +60,7 @@ const Login = ({isAuth, login}) => {
 
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl,
 })
 
 export default connect(mapStateToProps, {login})(Login)

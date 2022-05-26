@@ -1,5 +1,6 @@
 import s from "./Pagination.module.css";
 import React, {useState} from "react";
+import cn from 'classnames'
 
 const Pagination = ({totalItemsCount, pageSize, onPageChanged, currentPage, portionSize}) => {
     const pages = []
@@ -27,8 +28,7 @@ const Pagination = ({totalItemsCount, pageSize, onPageChanged, currentPage, port
             {pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber).map(p => {
                 return <div onClick={() => {
                     onPageChanged(p)
-                }} key={p} className={currentPage === p ? `${s.page} ${s.currentPage}` :
-                    s.page}>{p}</div>
+                }} key={p} className={cn(s.page, {[s.currentPage]: currentPage === p})}>{p}</div>
             })}
             {portionNumber < portionCount &&
                 <button className={s.nextButton} onClick={onNextBtnClick}>NEXT</button>}
@@ -37,3 +37,6 @@ const Pagination = ({totalItemsCount, pageSize, onPageChanged, currentPage, port
 }
 
 export default Pagination
+
+/*
+currentPage === p ? `${s.page} ${s.currentPage}` : s.page*/

@@ -30,7 +30,6 @@ export const authAPI = {
         return response.data
     },
     async login(email, password, rememberMe = false, captcha = null) {
-        debugger
         const response = await instance.post("/auth/login", {email, password, rememberMe, captcha})
         return response.data
     },

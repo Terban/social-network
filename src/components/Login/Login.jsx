@@ -2,7 +2,7 @@ import s from "./Login.module.css"
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import React from "react";
 import {connect} from "react-redux";
-import {login} from "../../redux/auth-reducer";
+import {login} from "../../redux/auth-reducer.ts";
 import {Redirect} from "react-router-dom";
 
 const Login = ({isAuth, login, captchaUrl}) => {

@@ -4,14 +4,15 @@ const SET_AUTH_USER_DATA = 'auth/SET_AUTH_USER_DATA'
 const SET_CAPTCHA_URL = 'auth/SET_CAPTCHA_URL'
 
 const initialState = {
-    id: null,
-    login: null,
-    email: null,
+    id: null as number | null,
+    login: null as string | null,
+    email: null as string | null,
     isAuth: false,
-    captchaUrl: null
+    captchaUrl: null as string | null
 }
 
-function authReducer(state = initialState, action) {
+type InitialStateType = typeof initialState
+const authReducer = (state = initialState, action): InitialStateType => {
     switch (action.type) {
         case SET_AUTH_USER_DATA:
         case SET_CAPTCHA_URL:
@@ -24,14 +25,27 @@ function authReducer(state = initialState, action) {
     }
 }
 
-export const setAuthUserData = (id, login, email, isAuth) => ({
+type SetAuthUserDataActionType = {
+    type: typeof SET_AUTH_USER_DATA
+    payload: {
+        id: number | null
+        login: string | null
+        email: string | null
+        isAuth: boolean
+    }
+}
+export const setAuthUserData = (id, login, email, isAuth): SetAuthUserDataActionType => ({
     type: SET_AUTH_USER_DATA,
-    payload: {id, login, email, isAuth}
+    payload: {id, login, email, isAuth},
 })
 
-export const captchaUrlSuccess = (captchaUrl) => ({
+type CaptchaUrlSuccessActionType = {
+    type: typeof SET_CAPTCHA_URL
+    payload: { captchaUrl: string }
+}
+export const captchaUrlSuccess = (captchaUrl): CaptchaUrlSuccessActionType => ({
     type: SET_CAPTCHA_URL,
-    payload: {captchaUrl}
+    payload: {captchaUrl},
 })
 
 export const getAuthMe = () => async (dispatch) => {
@@ -47,7 +61,7 @@ export const login = (email, password, rememberMe, captcha, setStatus) => async 
     if (data.resultCode === 0) {
         dispatch(getAuthMe())
     } else {
-        if(data.resultCode === 10) dispatch(getCaptchaUrl())
+        if (data.resultCode === 10) dispatch(getCaptchaUrl())
         setStatus(data.messages.join(" "))
     }
 }

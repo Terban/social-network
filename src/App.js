@@ -9,7 +9,7 @@ import Login from "./components/Login/Login";
 import {NavbarContainer} from "./components/Navbar/NavbarContainer";
 import {Component} from "react";
 import {connect} from "react-redux";
-import {getInitialization} from "./redux/app-reducer";
+import {getInitialization} from "./redux/app-reducer.ts";
 import Preloader from "./components/common/Preloader/Preloader";
 import {withSuspense} from "./hoc/withSuspense";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";

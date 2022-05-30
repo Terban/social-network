@@ -1,4 +1,5 @@
-import {getAuthMe} from "./auth-reducer";
+// @ts-ignore
+import {getAuthMe} from "./auth-reducer.ts";
 
 const SET_INITIALIZATION = 'app/SET_INITIALIZATION'
 
@@ -6,7 +7,9 @@ const initialState = {
     initialized: false,
 }
 
-function appReducer(state = initialState, action) {
+type InitialStateType = typeof initialState
+
+const appReducer = (state = initialState, action): InitialStateType => {
     switch (action.type) {
         case SET_INITIALIZATION:
             return {
@@ -18,7 +21,8 @@ function appReducer(state = initialState, action) {
     }
 }
 
-export const setInitialization = () => ({type: SET_INITIALIZATION})
+type SetInitializationActionType = {type: typeof SET_INITIALIZATION}
+export const setInitialization = (): SetInitializationActionType => ({type: SET_INITIALIZATION})
 
 export const getInitialization = () => (dispatch) => {
     let promise = dispatch(getAuthMe())

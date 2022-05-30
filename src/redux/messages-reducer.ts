@@ -1,5 +1,17 @@
 const ADD_NEW_MESSAGE = 'messages/ADD_NEW_MESSAGE'
 
+type DialogType = {
+    id: number
+    avatar: string
+    name: string
+}
+
+type MessageType = {
+    id: number
+    avatar: string
+    name: string
+    message: string
+}
 const initialState = {
     dialogs: [
         {
@@ -32,7 +44,7 @@ const initialState = {
             avatar: 'https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-128.png',
             name: 'Ivan'
         }
-    ],
+    ] as Array<DialogType>,
     messages: [
         {
             id: 1,
@@ -58,17 +70,18 @@ const initialState = {
             name: 'Me',
             message: 'We are waiting'
         },
-    ],
+    ] as Array<MessageType>,
 }
+type InitialStateType = typeof initialState
 
-function messagesReducer(state = initialState, action) {
+const messagesReducer = (state = initialState, action: any): InitialStateType =>  {
     switch (action.type) {
         case ADD_NEW_MESSAGE:
             const newMessage = {
                 id: 5,
                 avatar: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png',
                 name: 'Me',
-                message: action.newMessageText
+                message: action.newMessageText,
             }
             return {
                 ...state,
@@ -79,6 +92,10 @@ function messagesReducer(state = initialState, action) {
     }
 }
 
-export const addNewMessage = (newMessageText) => ({type: ADD_NEW_MESSAGE, newMessageText})
+type AddNewMessageActionType = {
+    type: typeof ADD_NEW_MESSAGE
+    newMessageText: string
+}
+export const addNewMessage = (newMessageText): AddNewMessageActionType => ({type: ADD_NEW_MESSAGE, newMessageText})
 
 export default messagesReducer

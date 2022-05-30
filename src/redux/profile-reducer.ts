@@ -1,4 +1,5 @@
 import {profileAPI} from "../api/api";
+import {PhotosType} from "../types/types";
 
 const ADD_NEW_POST = 'profile/ADD_NEW_POST'
 const DELETE_POST = 'profile/DELETE_POST'
@@ -6,6 +7,32 @@ const SET_USER_PROFILE = 'profile/SET_USER_PROFILE'
 const SET_USER_STATUS = 'profile/SET_USER_STATUS'
 const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO_SUCCESS'
 
+type PostType = {
+    id: number
+    avatar: string
+    name: string
+    message: string
+    likes: number
+}
+type ContactsType = {
+    github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube: string
+    mainLink: string
+}
+
+type ProfileType = {
+    userId: string
+    lookingForAJob: string
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: ContactsType
+    photos: PhotosType
+}
 const initialState = {
     posts: [
         {
@@ -29,13 +56,14 @@ const initialState = {
             message: 'This is my first post',
             likes: 30
         }
-    ],
+    ] as Array<PostType>,
     newPostText: '',
-    profile: null,
+    profile: null as ProfileType | null,
     status: ''
 }
 
-function profileReducer(state = initialState, action) {
+type InitialStateType = typeof initialState
+const profileReducer = (state = initialState, action): InitialStateType =>  {
     switch (action.type) {
         case ADD_NEW_POST:
             const newPost = {
@@ -74,11 +102,31 @@ function profileReducer(state = initialState, action) {
     }
 }
 
-export const addNewPost = (newPostText) => ({type: ADD_NEW_POST, newPostText})
-export const deletePost = (id) => ({type: DELETE_POST, id})
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
-export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
-export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
+type AddNewPostActionType = {
+    type: typeof ADD_NEW_POST
+    newPostText: string
+}
+export const addNewPost = (newPostText): AddNewPostActionType => ({type: ADD_NEW_POST, newPostText})
+type DeletePostActionType = {
+    type: typeof DELETE_POST
+    id: number
+}
+export const deletePost = (id): DeletePostActionType => ({type: DELETE_POST, id})
+type SetUserProfileActionType = {
+    type: typeof SET_USER_PROFILE
+    profile: ProfileType
+}
+export const setUserProfile = (profile): SetUserProfileActionType => ({type: SET_USER_PROFILE, profile})
+type SetUserStatusActionType = {
+    type: typeof SET_USER_STATUS
+    status: string
+}
+export const setUserStatus = (status): SetUserStatusActionType => ({type: SET_USER_STATUS, status})
+type SavePhotoSuccessActionType = {
+    type: typeof SAVE_PHOTO_SUCCESS
+    photos: PhotosType
+}
+export const savePhotoSuccess = (photos): SavePhotoSuccessActionType => ({type: SAVE_PHOTO_SUCCESS, photos})
 
 export const getProfile = (userId) => async (dispatch) => {
     const data = await profileAPI.getProfile(userId)
@@ -91,8 +139,8 @@ export const getStatus = (userId) => async (dispatch) => {
 }
 
 export const updateStatus = (status) => async (dispatch) => {
-        const data = await profileAPI.updateStatus(status)
-        if (data.resultCode === 0) dispatch(setUserStatus(status))
+    const data = await profileAPI.updateStatus(status)
+    if (data.resultCode === 0) dispatch(setUserStatus(status))
 }
 
 export const savePhoto = (photoFile) => async (dispatch) => {

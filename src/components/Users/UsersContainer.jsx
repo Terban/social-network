@@ -3,7 +3,7 @@ import Users from "./Users";
 import {
     follow,
     getUsers, unfollow
-} from "../../redux/users-reducer";
+} from "../../redux/users-reducer.ts";
 import React from "react";
 import Preloader from "../common/Preloader/Preloader";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
